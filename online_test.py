@@ -11,13 +11,10 @@ def is_workday(date):
         return False
 
 # config
-# purchase_period_days = 7
-# get_fund_start_time = '14:00:00'
-# get_fund_end_time = '14:30:00'
+purchase_period_days = 7
+get_fund_start_time = '14:00:00'
+get_fund_end_time = '14:30:00'
 
-purchase_period_days = 2
-get_fund_start_time = '18:40:00'
-get_fund_end_time = '19:30:00'
 
 
 if __name__ == '__main__':
@@ -35,8 +32,8 @@ if __name__ == '__main__':
     email_sender = EmailSender()
 
     while True:
-        # today_date = datetime.date.today()
-        today_date = datetime.datetime.strptime("2023-04-27",'%Y-%m-%d') #for offline test
+        today_date = datetime.date.today()
+        # today_date = datetime.datetime.strptime("2023-04-27",'%Y-%m-%d') #for offline test
 
         sleep_s = 60*60 #60 minutes
         if is_workday(today_date) is False:

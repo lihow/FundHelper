@@ -1,3 +1,5 @@
+https://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@github.com/lihow/FundHelper.git
+
 ## 1.基金获取
 ```bash
 fund_data.py

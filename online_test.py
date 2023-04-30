@@ -10,6 +10,16 @@ def is_workday(date):
     else:
         return False
 
+# config
+# purchase_period_days = 7
+# get_fund_start_time = '14:00:00'
+# get_fund_end_time = '14:30:00'
+
+purchase_period_days = 2
+get_fund_start_time = '18:40:00'
+get_fund_end_time = '19:30:00'
+
+
 if __name__ == '__main__':
     funds = [['000751', '嘉实兴业'],
              ['002190', '农银新能源'],
@@ -19,14 +29,14 @@ if __name__ == '__main__':
     fund_simulators = []
     print('Init simulator and email sender')
     for i in range(len(funds)):
-        fund_simulators.append(FundSimulator(funds[i][0], 2))
+        fund_simulators.append(FundSimulator(funds[i][0], purchase_period_days))
         fund_simulators[-1].history_simulate(show=False)
         print('  '+funds[i][1]+'['+funds[i][0]+'] simulator: inited')
     email_sender = EmailSender()
 
     while True:
         # today_date = datetime.date.today()
-        today_date = datetime.datetime.strptime("2023-04-27",'%Y-%m-%d')
+        today_date = datetime.datetime.strptime("2023-04-27",'%Y-%m-%d') #for offline test
 
         sleep_s = 60*60 #60 minutes
         if is_workday(today_date) is False:
@@ -34,8 +44,7 @@ if __name__ == '__main__':
             time.sleep(sleep_s)
             continue
 
-        # start_time, end_time ='14:00:00', '14:30:00'
-        start_time, end_time ='18:00:00', '18:30:00'
+        start_time, end_time = get_fund_start_time, get_fund_end_time
         now_time = time.strftime("%H:%M:%S", time.localtime())
         if start_time < now_time < end_time: 
             try:   

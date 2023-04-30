@@ -22,7 +22,7 @@ if __name__ == '__main__':
              ['002190', '农银新能源'],
              ['110035', '易方达双债'],
              ['519674', '银河创新混合'],
-             ['110003', '易方达双债']]
+             ['110003', '易方达上证50']]
     fund_simulators = []
     print('Init simulator and email sender')
     for i in range(len(funds)):
